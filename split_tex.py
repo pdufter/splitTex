@@ -1,11 +1,12 @@
 import re
 import os
 
+# TODO make usable from command line
+
 original_file = 'example.tex'
 
 # parse file
 with open(original_file, 'r') as f:
-    # TODO improve parsing
     # TODO test enocding
     data=f.read()
 
@@ -16,6 +17,7 @@ data = re.split(r"\\end{document}", data[1])
 document = data[0]
 footer = data[1]
 
+# TODO make section selection flexible
 sections = re.split(r"\\section\{(.+?)\}", document)
 section_0 = sections[0]
 sections = sections[1:]
@@ -28,6 +30,7 @@ directory = "content"
 if not os.path.exists(directory):
     os.makedirs(directory)
 else:
+    # TODO add option to overwrite
     raise ValueError("Directory 'content' exists already.")
 
 for i in range(0, len(sections) / 2):
