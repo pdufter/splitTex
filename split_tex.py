@@ -17,7 +17,7 @@ data = re.split(r"\\end{document}", data[1])
 document = data[0]
 footer = data[1]
 
-# TODO make section selection flexible
+# TODO make section selection flexible (using Latex Hierarchy)
 sections = re.split(r"\\section\{(.+?)\}", document)
 section_0 = sections[0]
 sections = sections[1:]
