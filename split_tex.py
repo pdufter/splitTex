@@ -41,7 +41,6 @@ for i in range(0, len(sections) / 2):
     mainfile = mainfile + "\include{" + re.sub(".tex", "", filename) + "}\n"
 
     with open(filename, "w") as f:
-        # TODO formatting is broke obviously
         f.write("\section{" + sections[2 * i] + "}" + sections[2 * i + 1])
 
 
