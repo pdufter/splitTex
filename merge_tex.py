@@ -13,5 +13,13 @@ with open(main_file, 'r') as f:
 
 includes = re.findall(r'\\include{(.+?)}', data)
 
-for includes in include:
-    
+for include in includes:
+    with open(include + ".tex", 'r') as f:
+        # TODO test enocding
+        section = f.read()
+    data = re.sub(r'\\include{' + include + '}', section, data)
+
+
+
+with open(re.sub(".tex", "_merged.tex", main_file), 'w') as f:
+    f.write(data)
